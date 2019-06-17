@@ -21,25 +21,32 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:rim="http://www.blackberry.com/ns/widgets"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="cordova-plugin-client-certificate-addictic"
-    version="0.0.3">
+    id="cordova-plugin-client-certificate"
+    version="0.0.4-dev">
+
     <name>Client Certificate</name>
+
     <description>Cordova Client Certificate Plugin</description>
+
     <license>Apache 2.0</license>
     <keywords>client, certificate, authentication, client certificate</keywords>
-    <repo>https://github.com/agenceaddictic/cordova-plugin-client-certificate-addictic.git</repo>
-    <issue>https://github.com/agenceaddictic/cordova-plugin-client-certificate-addictic/issues</issue>
-
-    <js-module src="www/clientCertificate.js" name="clientCertificate">
-        <clobbers target="clientCertificate" />
-    </js-module>
+    <repo>https://github.com/mwaylabs/cordova-plugin-client-certificate.git</repo>
+    <issue>https://github.com/mwaylabs/cordova-plugin-client-certificate/issues</issue>
 
     <!-- ios -->
     <platform name="ios">
+        <js-module src="www/clientCertificate.js" name="clientCertificate">
+            <clobbers target="clientCertificate" />
+        </js-module>
+
         <config-file target="config.xml" parent="/*">
             <feature name="ClientCertificate">
                 <param name="ios-package" value="ClientCertificate"/>
+                <param name="onload" value="true" />
+            </feature>
+            <feature name="OpenCertFile">
                 <param name="ios-package" value="OpenCertFile"/>
+                <param name="onload" value="true" />
             </feature>
         </config-file>
 
@@ -57,7 +64,6 @@
         <source-file src="src/ios/QNSURLSessionDemux.m" />
         <header-file src="src/ios/OpenCertFile.h" />
         <source-file src="src/ios/OpenCertFile.m" />
-
 
         <config-file target="*-Info.plist" parent="CFBundleDocumentTypes">
             <array>
@@ -94,6 +100,7 @@
             </array>
         </config-file>
     </platform>
+
   <platform name="android">
     <config-file target="res/xml/config.xml" parent="/*">
       <feature name="ClientCertificateAuthentication">
@@ -103,4 +110,5 @@
     </config-file>
     <source-file src="src/android/ClientCertificateAuthentication.java" target-dir="src/de/jstd/cordova/plugin"/>
   </platform>
+
 </plugin>
